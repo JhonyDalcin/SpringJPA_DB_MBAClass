@@ -19,4 +19,5 @@ public class DepartamentoService {
         return repository.findAll();
     }
 
+    public Departamento saveDepartamento(Departamento departamento) {return repository.save(departamento);}
 }

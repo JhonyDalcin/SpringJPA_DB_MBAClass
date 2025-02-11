@@ -25,9 +25,9 @@ public class SpringDataConfig {
         HikariDataSource ds = new HikariDataSource();
 
         ds.setUsername("root");
-        ds.setPassword("senharoot");
-        ds.setJdbcUrl("jdbc:h2:mem:teste");
-        ds.setDriverClassName("org.h2.Driver");
+        ds.setPassword("29200830");
+        ds.setJdbcUrl("jdbc:mariadb://localhost:3307/projeto_disciplina_db");
+        ds.setDriverClassName("org.mariadb.jdbc.Driver");
 
         return ds;
     }
