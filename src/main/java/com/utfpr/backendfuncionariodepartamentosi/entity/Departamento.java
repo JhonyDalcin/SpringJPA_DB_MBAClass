@@ -16,6 +16,8 @@ public class Departamento {
     @Column(name = "nome", nullable = false, length = 30)
     private String nome;
 
+    public Departamento() {}
+
     public Departamento(String nome) {
         this.nome = nome;
     }
