@@ -20,4 +20,7 @@ public class DepartamentoService {
     }
 
     public Departamento saveDepartamento(Departamento departamento) {return repository.save(departamento);}
+
+    public Departamento buscarPrimeiroDepartamentoCadastrado() {return repository.findFirstByOrderByIdAsc();}
+
 }

@@ -31,6 +31,15 @@ public class BackendCategoriaMusicaSiApplication {
 			log.info("=============Listagem de todos os FUNCIONÁRIOS:");
 			funcionarioService.listarTodosFuncionarios().forEach(System.out::println);
 
+			log.info("=============Primeiro Funcionário Com Maior Salário");
+			log.info(funcionarioService.primeiroFuncionarioComMaiorSalario().toString());
+			log.info("=============Busca por nome e quantidade de funcionários:");
+			log.info(funcionarioService.buscarFuncionarioPorNomeEqtdeDependents("Ana Clara", 2).toString());
+			log.info("=============Primeiro Departamento Cadastrado:");
+			log.info(departamentoService.buscarPrimeiroDepartamentoCadastrado().toString());
+			log.info("=============Funcionários 3 Maiores Salários:");
+			funcionarioService.funcionariosCom3MaioresSalarios().forEach(System.out::println);
+
 		};
 	}
 
