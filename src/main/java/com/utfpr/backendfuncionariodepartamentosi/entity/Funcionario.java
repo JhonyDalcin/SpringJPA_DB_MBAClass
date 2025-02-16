@@ -6,6 +6,15 @@ import lombok.Data;
 @Entity
 @Table(name = "funcionario")
 @Data
+@NamedQuery(
+        name = "Funcionario.byQtdeDependentes",
+        query = "from Funcionario f where f.qtdeDependentes = ?1"
+)
+@NamedNativeQuery(
+        name = "Funcionario.byContemNome",
+        query = "select * from funcionario f where f.nome like CONCAT('%', ?1, '%')",
+        resultClass = Funcionario.class
+)
 public class Funcionario {
 
     @Id

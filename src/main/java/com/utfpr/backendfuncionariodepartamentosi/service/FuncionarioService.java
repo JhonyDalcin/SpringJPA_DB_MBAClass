@@ -21,13 +21,45 @@ public class FuncionarioService {
 
     public Funcionario save(Funcionario funcionario) {return repository.save(funcionario);}
 
-//    Exercício 1
-    public Funcionario buscarFuncionarioPorNomeEqtdeDependents(String nome, int dependentes) {return repository.findByNomeAndQtdeDependentes(nome, dependentes);}
+//  Exercício 1
+    public Funcionario buscarFuncionarioPorNomeEqtdeDependents(String nome, int dependentes) {
+        return repository.findByNomeAndQtdeDependentes(nome, dependentes);}
 
-//    Exercício 4
-    public Funcionario primeiroFuncionarioComMaiorSalario() {return repository.findFirstByOrderBySalarioDesc();}
+//  Exercício 2
+    public List<Funcionario> buscarFuncionarioPorNomeDepartamento(String nome) {
+        return repository.findFuncionarioByNomeDoDepartamento(nome);
+    }
 
-//    Exercício 5
-    public List<Funcionario> funcionariosCom3MaioresSalarios() {return repository.findFirst3ByOrderBySalarioDesc();}
+//  Exercício 4
+    public Funcionario primeiroFuncionarioComMaiorSalario() {
+        return repository.findFirstByOrderBySalarioDesc();}
+
+//  Exercício 5
+    public List<Funcionario> funcionariosCom3MaioresSalarios() {
+        return repository.findFirst3ByOrderBySalarioDesc();}
+
+//  Exercício 6
+    public List<Funcionario> funcionariosSemDependentesPorOrdemAlfabetica(){
+        return repository.findFuncionariosSemDependentesPorOrdemAlfabetica();
+    }
+
+//  Exercício 7
+    public List<Funcionario> funcionariosComSalarioMaiorQue(double salario) {
+        return repository.findFuncionariosBySalarioIsGreaterThan(salario);
+    }
+
+//  Exercício 8
+    public List<Funcionario> nativeQueryFuncionariosComSalarioMaiorQue(double salario) {
+        return repository.nativeQueryFindFuncionariosComSalarioMaiorQue(salario);
+    }
+
+//  Exercício 10
+    public List<Funcionario> namedFuncionariosPorQntdeDependentes(int dependentes) {
+        return repository.findFuncionariosByQtdeDependentes(dependentes);
+    }
+
+    public List<Funcionario> namedFuncionariosContemNome(String nome) {
+        return repository.findFuncionariosByContemNome(nome);
+    }
 
 }
