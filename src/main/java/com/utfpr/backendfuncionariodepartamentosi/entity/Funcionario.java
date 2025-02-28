@@ -17,6 +17,15 @@ import lombok.Data;
 )
 public class Funcionario {
 
+    public Funcionario() {}
+
+    public Funcionario(String nome, Integer qtdeDependentes, Double salario, String cargo) {
+        this.nome = nome;
+        this.qtdeDependentes = qtdeDependentes;
+        this.salario = salario;
+        this.cargo = cargo;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_funcionario", nullable = false)

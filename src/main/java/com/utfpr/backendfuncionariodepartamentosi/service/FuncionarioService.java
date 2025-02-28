@@ -62,4 +62,24 @@ public class FuncionarioService {
         return repository.findFuncionariosByContemNome(nome);
     }
 
+//  Exercício 1 - Transações
+    public void salaryIncrease(Integer porcentage){
+        repository.procSalaryIncrease(porcentage);
+    }
+
+//  Exercício 2 - Transações
+    public List<Funcionario> buscarFuncionarioSemDependentesPorDepartamento(String departamento) {
+        return repository.findFuncionariosSemDependentesByDepartamento(departamento);
+    }
+
+//  Exercício 3 - Transações
+    public int atualizarDepartamento(String newDepartment, String oldDepartment) {
+        return repository.updateDepartamento(newDepartment, oldDepartment);
+    }
+
+// Exercício 4 - Transações
+    public int deletarTodosFuncionariosPorDepartamento(String departamento) {
+        return repository.deleteTodosFuncionariosPorDepartamento(departamento);
+    }
+
 }

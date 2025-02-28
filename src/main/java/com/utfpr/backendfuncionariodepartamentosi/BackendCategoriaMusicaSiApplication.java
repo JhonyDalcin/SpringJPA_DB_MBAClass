@@ -1,5 +1,7 @@
 package com.utfpr.backendfuncionariodepartamentosi;
 
+import com.utfpr.backendfuncionariodepartamentosi.entity.Departamento;
+import com.utfpr.backendfuncionariodepartamentosi.entity.Funcionario;
 import com.utfpr.backendfuncionariodepartamentosi.service.DepartamentoService;
 import com.utfpr.backendfuncionariodepartamentosi.service.FuncionarioService;
 import org.slf4j.Logger;
@@ -41,6 +43,37 @@ public class BackendCategoriaMusicaSiApplication {
 			funcionarioService.namedFuncionariosPorQntdeDependentes(2).forEach(System.out::println);
 			log.info("=============Funcionários que contem nome por NamedNativeQuery:");
 			funcionarioService.namedFuncionariosContemNome("Silva").forEach(System.out::println);
+
+			log.info("=============Salários antes da procedure: ");
+			for (Funcionario f : funcionarioService.listarTodosFuncionarios())
+				log.info(f.toString());
+			log.info("=============Chamando PROCEDURE para aumentar salário em 15%");
+			funcionarioService.salaryIncrease(15);
+			for (Funcionario f : funcionarioService.listarTodosFuncionarios())
+				log.info(f.toString());
+
+			log.info("=============Funcionários sem dependentes da Diretoria");
+			for (Funcionario f : funcionarioService.buscarFuncionarioSemDependentesPorDepartamento("Diretoria"))
+				log.info(f.toString());
+
+			log.info("=============Atualizando Recrusos Humanos para Financeiro");
+			int affectedFunc = funcionarioService.atualizarDepartamento("Financeiro", "Recursos Humanos");
+			log.info("Impacted Employees: " + affectedFunc);
+			for (Funcionario f : funcionarioService.listarTodosFuncionarios())
+				log.info(f.toString());
+
+			log.info("=============Deletando todos os funcionários da Diretoria");
+			int deletedFunc = funcionarioService.deletarTodosFuncionariosPorDepartamento("Diretoria");
+			log.info("Deleted Employees: " + deletedFunc);
+			for (Funcionario f : funcionarioService.listarTodosFuncionarios())
+				log.info(f.toString());
+
+			log.info("=============Salvando novo funcionário com novo departamento");
+			Departamento departamento = new Departamento("Serviços Gerais");
+			Funcionario funcionario = new Funcionario("José da Silva", 3, 3500.00, "Severino");
+			departamentoService.save(departamento, funcionario);
+			for (Funcionario f : funcionarioService.listarTodosFuncionarios())
+				log.info(f.toString());
 		};
 	}
 
